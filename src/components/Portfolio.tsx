@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import {
   categories,
-  certifications,
+  education,
   clients,
   featuredProject,
   impact,
@@ -142,25 +142,15 @@ export default function Portfolio() {
                 <p className="id-sub">{t(ui.card.subtitle)}</p>
                 <dl>
                   <div>
-                    <dt>[ {t(ui.card.now)} ]</dt>
-                    <dd>{t(ui.card.nowText)}</dd>
-                  </div>
-                  <div>
-                    <dt>[ {t(ui.card.focus)} ]</dt>
-                    <dd>{t(ui.card.focusText)}</dd>
-                  </div>
-                  <div>
                     <dt>[ {t(ui.card.base)} ]</dt>
                     <dd>{t(profile.location)}</dd>
                   </div>
                   <div>
-                    <dt>[ {t(ui.card.off)} ]</dt>
-                    <dd>{t(ui.card.offText)}</dd>
+                    <dt>[ {t(ui.card.age)} ]</dt>
+                    <dd>{t(ui.card.ageText)}</dd>
                   </div>
                 </dl>
-                <p className="id-note">
-                  <span className="pulse" /> {t(ui.card.reply)}
-                </p>
+                <p className="id-note">{t(ui.card.reply)}</p>
               </div>
               <a className="id-cta" href={whatsapp} target="_blank" rel="noreferrer">
                 <span className="pulse" /> {t(ui.talk)}
@@ -181,16 +171,23 @@ export default function Portfolio() {
         {/* Clientes */}
         <section className="wrap clients" aria-label={t(ui.clientsLabel)}>
           <p className="label">[ {t(ui.clientsLabel)} ]</p>
-          <ul className="logo-wall">
-            {clients.map((c) => (
-              <li key={c.name} data-reveal>
+        </section>
+        <div className="marquee" aria-hidden="true">
+          <ul>
+            {[...clients, ...clients].map((c, i) => (
+              <li key={i}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={c.logo} alt={c.name} style={{ height: c.height }} loading="lazy" />
+                <img src={c.logo} alt="" style={{ height: c.height }} />
                 {c.label && <span>{c.name}</span>}
               </li>
             ))}
           </ul>
-        </section>
+        </div>
+        <ul className="sr-only">
+          {clients.map((c) => (
+            <li key={c.name}>{c.name}</li>
+          ))}
+        </ul>
 
         {/* Abordagem */}
         <section className="wrap section" id="about">
@@ -307,17 +304,16 @@ export default function Portfolio() {
               ))}
             </ol>
             <aside className="certs" data-reveal>
-              <h3>[ {t(ui.certTitle)} ]</h3>
-              <ul>
-                {certifications.map((c) => (
-                  <li key={c.name}>
-                    <span>{c.name}</span>
-                    <span className="muted">
-                      {c.issuer} · {c.year}
-                    </span>
-                  </li>
-                ))}
-              </ul>
+              <h3>[ {t(ui.eduTitle)} ]</h3>
+              <a className="diploma" href={education.file} target="_blank" rel="noreferrer">
+                <span>
+                  <strong>{t(education.course)}</strong>
+                  <span className="muted">{education.school}</span>
+                </span>
+                <span className="diploma-link">
+                  {t(ui.diploma)} <Icon name="arrow" size={14} />
+                </span>
+              </a>
               <h3>[ {t(ui.stackTitle)} ]</h3>
               <div className="stack">
                 {stack.map((g) => (

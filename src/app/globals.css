@@ -651,30 +651,54 @@ html[data-intro="done"] .line > span {
 /* Clientes */
 .clients {
   padding-top: 56px;
-  padding-bottom: 8px;
 }
 
-.logo-wall {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  gap: 24px 40px;
+.marquee {
   margin-top: 18px;
-  padding: 36px 0;
+  padding: 34px 0;
+  overflow: hidden;
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
 }
 
-.logo-wall li {
+.marquee ul {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  animation: marquee 38s linear infinite;
+}
+
+.marquee:hover ul {
+  animation-play-state: paused;
+}
+
+.marquee li {
   display: flex;
   align-items: center;
   gap: 10px;
+  padding: 0 44px;
   font-weight: 600;
   letter-spacing: -0.02em;
+  white-space: nowrap;
 }
 
-.logo-wall img {
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.marquee img {
   width: auto;
   max-width: 100%;
   object-fit: contain;
@@ -683,28 +707,28 @@ html[data-intro="done"] .line > span {
   transition: filter 0.35s ease, opacity 0.35s ease;
 }
 
-.logo-wall li:hover img {
+.marquee li:hover img {
   filter: none;
   opacity: 1;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .logo-wall img {
+  :root:not([data-theme="light"]) .marquee img {
     filter: grayscale(1) brightness(0) invert(1);
   }
 }
 
-:root[data-theme="dark"] .logo-wall img {
+:root[data-theme="dark"] .marquee img {
   filter: grayscale(1) brightness(0) invert(1);
 }
 
-:root[data-theme="dark"] .logo-wall li:hover img {
+:root[data-theme="dark"] .marquee li:hover img {
   filter: grayscale(1) brightness(0) invert(1);
   opacity: 1;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .logo-wall li:hover img {
+  :root:not([data-theme="light"]) .marquee li:hover img {
     filter: grayscale(1) brightness(0) invert(1);
     opacity: 1;
   }
@@ -1357,6 +1381,41 @@ html[data-intro="done"] .line > span {
   font-size: 12.5px;
 }
 
+.diploma {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 14px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  transition: border-color 0.2s ease;
+}
+
+.diploma:hover {
+  border-color: var(--brand-ink);
+}
+
+.diploma > span:first-child {
+  display: flex;
+  flex-direction: column;
+  font-size: 14.5px;
+}
+
+.diploma .muted {
+  font-size: 12.5px;
+}
+
+.diploma-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  flex: none;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--brand-ink);
+}
+
 .stack {
   display: grid;
   gap: 14px;
@@ -1485,12 +1544,13 @@ html[data-intro="done"] .line > span {
   .ps {
     grid-template-columns: 1fr;
   }
-  .logo-wall {
-    justify-content: center;
-    gap: 28px 36px;
-    padding: 28px 0;
+  .marquee {
+    padding: 26px 0;
   }
-  .logo-wall img {
+  .marquee li {
+    padding: 0 28px;
+  }
+  .marquee img {
     transform: scale(0.85);
   }
   .impact li {
@@ -1541,6 +1601,7 @@ html[data-intro="done"] .line > span {
     opacity: 1 !important;
     transition: none;
   }
+  .marquee ul,
   .illo *,
   .project,
   .pulse {

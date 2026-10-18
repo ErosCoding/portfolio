@@ -34,28 +34,24 @@ export const ui = {
   available: { pt: "Aberto a novos projetos", en: "Open to new projects" },
   talk: { pt: "Chamar no WhatsApp", en: "Message me" },
   talkShort: { pt: "Conversar", en: "Let's talk" },
-  heroLine1: { pt: "Agentes de IA e sistemas", en: "AI agents and systems" },
-  heroLine2: { pt: "que fazem empresas", en: "that help companies" },
-  heroAccent: { pt: "venderem mais.", en: "sell more." },
+  heroLine1: { pt: "Sistemas com IA que fazem sua empresa vender mais", en: "AI systems that help your company sell more" },
+  heroLine2: { pt: "", en: "" },
+  heroAccent: { pt: "e te devolvem tempo.", en: "and give you your time back." },
   heroSub: {
-    pt: "Automação no WhatsApp, fluxos com n8n, integrações entre APIs e produtos SaaS completos. Eu começo pelo problema do negócio e só depois escolho a ferramenta.",
-    en: "WhatsApp automation, n8n workflows, API integrations and full SaaS products. I start from the business problem and only then pick the tool.",
+    pt: "Eu olho para a sua operação, acho onde o dinheiro escapa e onde o tempo se perde, e construo o que resolve. Atendimento que roda sozinho, dados que não precisam ser copiados de um lugar para outro e números claros para decidir. Assim o dono foca no que realmente importa.",
+    en: "I look at your operation, find where money leaks and where time gets lost, and build what fixes it. Support that runs on its own, data that never needs retyping and clear numbers to decide with. So owners can focus on what really matters.",
   },
   card: {
     title: { pt: "Do problema ao sistema rodando", en: "From problem to running system" },
     subtitle: { pt: "IA, automação e produto", en: "AI, automation and product" },
-    now: { pt: "Agora", en: "Now" },
-    nowText: { pt: "CRM do Jordão na Emplo.ia", en: "CRM do Jordão at Emplo.ia" },
-    focus: { pt: "Foco", en: "Focus" },
-    focusText: { pt: "Vendas, atendimento e dados", en: "Sales, support and data" },
-    base: { pt: "Base", en: "Based in" },
-    off: { pt: "Fora do código", en: "Off the clock" },
-    offText: { pt: "Jiu-jitsu, artes marciais e xadrez", en: "Jiu-jitsu, martial arts and chess" },
-    reply: { pt: "Fala comigo pelo WhatsApp ou e-mail", en: "Reach me on WhatsApp or email" },
+    base: { pt: "De onde sou", en: "From" },
+    age: { pt: "Idade", en: "Age" },
+    ageText: { pt: "25 anos", en: "25 years old" },
+    reply: { pt: "Me conta o que está pensando pro seu negócio", en: "Tell me what you're planning for your business" },
   },
   stats: [
     { value: "10+", label: { pt: "empresas atendidas com automação e IA", en: "companies served with automation and AI" } },
-    { value: "8", label: { pt: "contas que conduzi como ponto focal técnico", en: "client accounts I led as technical owner" } },
+    { value: "12", label: { pt: "clientes na carteira que conduzi como ponto focal técnico", en: "client accounts I led as technical owner" } },
     { value: "1", label: { pt: "SaaS sob minha responsabilidade", en: "SaaS product I'm responsible for" } },
   ],
   approachText: {
@@ -64,8 +60,8 @@ export const ui = {
   },
   approachPoints: [
     {
-      pt: "Na Emplo.ia passei pela Entrega, cuidando de 8 clientes direto com diretores e fundadores.",
-      en: "At Emplo.ia I worked in Delivery, handling 8 clients directly with directors and founders.",
+      pt: "Na Emplo.ia passei pela Entrega, cuidando de uma carteira de 12 clientes direto com diretores e fundadores.",
+      en: "At Emplo.ia I worked in Delivery, handling a portfolio of 12 clients directly with directors and founders.",
     },
     {
       pt: "Na Aquisição, automatizei propostas e atendimentos para o vendedor só entrar na reunião e vender.",
@@ -98,7 +94,8 @@ export const ui = {
   filterAll: { pt: "Tudo", en: "All" },
   clientsLabel: { pt: "Empresas para quem criei soluções", en: "Companies I've built for" },
   pathTitle: { pt: "Trajetória", en: "Journey" },
-  certTitle: { pt: "Certificações", en: "Certifications" },
+  eduTitle: { pt: "Formação", en: "Education" },
+  diploma: { pt: "Ver diploma", en: "View diploma" },
   stackTitle: { pt: "Ferramentas", en: "Toolkit" },
   contactKicker: { pt: "Vamos conversar", en: "Let's talk" },
   contactTitle: { pt: "Tem um processo manual ou um funil vazando?", en: "Got a manual process or a leaky funnel?" },
@@ -119,20 +116,20 @@ export const services: { title: T; text: T; tags: string[] }[] = [
     tags: ["OpenAI", "Claude", "RAG", "Multiagentes"],
   },
   {
-    title: { pt: "Automação com n8n", en: "n8n automation" },
+    title: { pt: "Automações", en: "Automations" },
     text: {
       pt: "Fluxos que ligam formulário, CRM, WhatsApp, e-mail e planilha. Proposta que sai sozinha, lead distribuído na hora e relatório que chega pronto.",
       en: "Workflows connecting forms, CRM, WhatsApp, email and sheets. Proposals that send themselves, leads routed instantly and reports that arrive ready.",
     },
-    tags: ["n8n", "Webhooks", "Lovable", "Cron"],
+    tags: ["n8n", "Make", "Webhooks", "Lovable"],
   },
   {
     title: { pt: "Integrações e APIs", en: "Integrations and APIs" },
     text: {
-      pt: "WhatsApp (Z-API, Evolution, Meta Cloud), Google Calendar, Pipedrive, Asaas, Mautic, Apollo e Resend. Faço conversar sistemas que antes não se falavam.",
-      en: "WhatsApp (Z-API, Evolution, Meta Cloud), Google Calendar, Pipedrive, Asaas, Mautic, Apollo and Resend. I make systems talk that never did before.",
+      pt: "Integro com qualquer sistema que tenha API ou MCP disponível. WhatsApp (Z-API, Meta Cloud), Google Calendar, Pipedrive, Asaas, Mautic, Apollo, Resend e o que mais a operação usar.",
+      en: "I integrate with any system that has an API or MCP available. WhatsApp (Z-API, Meta Cloud), Google Calendar, Pipedrive, Asaas, Mautic, Apollo, Resend and whatever else the operation runs on.",
     },
-    tags: ["REST", "OAuth 2.0", "Webhooks", "Edge Functions"],
+    tags: ["REST", "MCP", "OAuth 2.0", "Webhooks"],
   },
   {
     title: { pt: "Produtos SaaS", en: "SaaS products" },
@@ -208,12 +205,12 @@ export const projects: Project[] = [
     year: "2025",
     categories: ["ai", "automation"],
     summary: {
-      pt: "Agentes no WhatsApp para lojas de iPhone e para a Impactour no Chile. Respondem dúvida de produto e de passeio, passam preço, qualificam e entregam o cliente pronto para o vendedor.",
-      en: "WhatsApp agents for iPhone retailers and for Impactour in Chile. They answer product and tour questions, quote prices, qualify and hand a ready customer to the sales team.",
+      pt: "Agentes no WhatsApp para varejo e turismo. Respondem dúvida de produto e de passeio, passam preço, qualificam e entregam o cliente pronto para o vendedor.",
+      en: "WhatsApp agents for retail and tourism. They answer product and tour questions, quote prices, qualify and hand a ready customer to the sales team.",
     },
     highlights: [
       { pt: "Fluxos em n8n com LLM, RAG em PDFs e planilhas e consulta a banco", en: "n8n flows with LLMs, RAG over PDFs and sheets, and database lookups" },
-      { pt: "Carteira de 8 clientes com reunião direta com donos e diretores", en: "A portfolio of 8 clients with direct meetings with owners and directors" },
+      { pt: "Carteira com 12 clientes e reunião direta com donos e diretores", en: "A portfolio of 12 clients with direct meetings with owners and directors" },
     ],
     stack: ["n8n", "OpenAI", "WhatsApp", "RAG", "Supabase"],
     private: true,
@@ -259,15 +256,15 @@ export const projects: Project[] = [
     private: true,
   },
   {
-    name: "Niche Lab",
+    name: "OS de Aquisição",
     org: "Emplo.ia",
     year: "2026",
-    categories: ["ai", "saas"],
+    categories: ["data", "ai"],
     summary: {
-      pt: "Fábrica de testes de nicho para tráfego frio. Para cada nicho a IA gera pesquisa de mercado, oferta, landing page, playbook de vendas, deck e criativos com a marca aplicada.",
-      en: "A niche testing factory for cold traffic. For each niche, AI generates market research, offer, landing page, sales playbook, deck and on-brand creatives.",
+      pt: "O sistema operacional da aquisição. Centraliza os dados do funil, métricas de anúncio, métricas do SDR de IA e conversões, e ainda gera pesquisa de mercado, oferta, landing page e criativos por nicho com IA.",
+      en: "The acquisition operating system. It centralizes funnel data, ad metrics, AI SDR metrics and conversions, and also generates market research, offers, landing pages and creatives per niche with AI.",
     },
-    stack: ["Next.js", "React 19", "Prisma", "OpenAI", "gpt-image", "Claude"],
+    stack: ["Next.js", "React 19", "Prisma", "OpenAI", "Claude"],
     private: true,
   },
   {
@@ -331,25 +328,13 @@ export const projects: Project[] = [
     private: true,
   },
   {
-    name: "Fanverse",
-    org: "Fanverse",
-    year: "2026",
-    categories: ["saas"],
-    summary: {
-      pt: "Rede social de fandoms para a América Latina, começando pela comunidade ARMY, com feed, perfis, enquetes, notificações e plano premium.",
-      en: "A fandom social network for Latin America, starting with the ARMY community, with feed, profiles, polls, notifications and a premium plan.",
-    },
-    stack: ["Next.js", "Supabase", "Postgres", "PayPal"],
-    url: "https://fanverse-fawn.vercel.app",
-  },
-  {
-    name: "Guia ARMY Santiago",
-    org: "Turismo · Chile",
+    name: "FAQ interativo",
+    org: "Impactour Chile",
     year: "2026",
     categories: ["web"],
     summary: {
-      pt: "Guia web em espanhol para quem ia ao show em Santiago, com prazos, pagamentos, logística e um FAQ de 116 perguntas com busca.",
-      en: "Spanish web guide for fans going to the Santiago concert, with deadlines, payments, logistics and a searchable 116 question FAQ.",
+      pt: "FAQ interativo em espanhol para os clientes da Impactour que iam ao show em Santiago, com prazos, pagamentos, logística e 116 perguntas com busca.",
+      en: "Interactive Spanish FAQ for Impactour customers going to the Santiago concert, with deadlines, payments, logistics and 116 searchable questions.",
     },
     stack: ["HTML", "CSS", "JavaScript", "Supabase"],
     url: "https://lp-faq-armys-chile.vercel.app",
@@ -360,8 +345,8 @@ export const projects: Project[] = [
     year: "2026",
     categories: ["web"],
     summary: {
-      pt: "Landing page de reserva. O visitante escolhe quarto, datas e pessoas, vê a estimativa e o botão abre o WhatsApp com a mensagem pronta.",
-      en: "Booking landing page. Visitors pick room, dates and guests, see an estimate, and the button opens WhatsApp with the message ready.",
+      pt: "Landing page de reserva. O visitante escolhe quarto, datas e pessoas, e o botão abre o WhatsApp do hostel com uma mensagem personalizada pronta para o vendedor, já com tudo que foi selecionado no site.",
+      en: "Booking landing page. Visitors pick room, dates and guests, and the button opens the hostel's WhatsApp with a personalized message ready for the sales rep, carrying everything selected on the site.",
     },
     stack: ["HTML", "CSS", "JavaScript"],
     url: "https://lp-enjoy-hostel.vercel.app",
@@ -388,11 +373,13 @@ export const projects: Project[] = [
       en: "During my internship at the Cost Management office, I redesigned the legacy system's UI and handled energy, water and supply data loads.",
     },
     stack: ["PHP", "JavaScript", "PowerCenter", "QlikSense"],
-    url: "https://github.com/ErosCoding/cic2",
+    private: true,
   },
 ];
 
 export const clients: { name: string; logo: string; height: number; label?: boolean }[] = [
+  { name: "Emplo.ia", logo: "/logos/emploia.svg", height: 30 },
+  { name: "CRM do Jordão", logo: "/logos/crm-do-jordao.png", height: 52 },
   { name: "RD Station", logo: "/logos/rd-station.svg", height: 30 },
   { name: "Krug Bier", logo: "/logos/krug-bier.webp", height: 56 },
   { name: "Kin Chopp", logo: "/logos/kin-chopp.png", height: 56 },
@@ -434,8 +421,8 @@ export const journey: { period: T; title: T; org: string; text: T }[] = [
     title: { pt: "Automation Developer", en: "Automation Developer" },
     org: "Emplo.ia",
     text: {
-      pt: "Soluções com LLM e n8n para 8 clientes, alinhamento direto com diretores e treinamento de times comerciais em CRM.",
-      en: "LLM and n8n solutions for 8 clients, direct alignment with directors, and CRM training for sales teams.",
+      pt: "Soluções com LLM e n8n para uma carteira de 12 clientes, alinhamento direto com diretores e treinamento de times comerciais em CRM.",
+      en: "LLM and n8n solutions for a portfolio of 12 clients, direct alignment with directors, and CRM training for sales teams.",
     },
   },
   {
@@ -476,20 +463,17 @@ export const journey: { period: T; title: T; org: string; text: T }[] = [
   },
 ];
 
-export const certifications: { name: string; issuer: string; year: string }[] = [
-  { name: "Claude Code in Action", issuer: "Anthropic", year: "2026" },
-  { name: "Multiagentes com n8n", issuer: "NoCode StartUp", year: "2025" },
-  { name: "RAG: conversando com PDF e planilhas", issuer: "NoCode StartUp", year: "2025" },
-  { name: "Tools: banco de dados e APIs no n8n", issuer: "NoCode StartUp", year: "2025" },
-  { name: "Agente de IA no WhatsApp", issuer: "NoCode StartUp", year: "2024" },
-  { name: "Engenharia de Prompts", issuer: "NoCode StartUp", year: "2024" },
-  { name: "Informatica PowerCenter", issuer: "Prodabel", year: "2024" },
-];
+// Coloque o PDF do diploma em public/diploma.pdf para o link funcionar.
+export const education = {
+  course: { pt: "Análise e Desenvolvimento de Sistemas", en: "Systems Analysis and Development" },
+  school: "PUC Minas",
+  file: "/diploma.pdf",
+};
 
 export const stack: { group: T; items: string[] }[] = [
-  { group: { pt: "IA", en: "AI" }, items: ["OpenAI", "Claude", "Gemini", "Whisper", "RAG", "Multiagentes"] },
-  { group: { pt: "Automação", en: "Automation" }, items: ["n8n", "Lovable", "Webhooks", "GitHub Actions"] },
-  { group: { pt: "Integrações", en: "Integrations" }, items: ["Z-API", "Evolution API", "Meta Cloud API", "Google APIs", "Pipedrive", "Asaas", "Mautic", "Apollo", "Resend"] },
-  { group: { pt: "Produto", en: "Product" }, items: ["Next.js", "React", "TypeScript", "Node.js", "Python", "FastAPI"] },
+  { group: { pt: "IA", en: "AI" }, items: ["OpenAI", "Claude", "Gemini", "Higgsfield", "Whisper", "RAG", "Multiagentes"] },
+  { group: { pt: "Automação", en: "Automation" }, items: ["n8n", "Make", "Lovable", "Webhooks", "GitHub Actions"] },
+  { group: { pt: "Integrações", en: "Integrations" }, items: ["Qualquer API ou MCP", "Z-API", "Meta Cloud API", "Google APIs", "Pipedrive", "Asaas", "Mautic", "Apollo", "Resend"] },
+  { group: { pt: "Produto", en: "Product" }, items: ["Next.js", "React", "JavaScript", "TypeScript", "Node.js", "Python", "FastAPI"] },
   { group: { pt: "Dados", en: "Data" }, items: ["Postgres", "Supabase", "Prisma", "Redis", "QlikSense", "PowerCenter"] },
 ];
