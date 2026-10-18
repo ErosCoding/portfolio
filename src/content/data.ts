@@ -396,7 +396,7 @@ export const projects: Project[] = [
 // Logos com color: true aparecem nas cores originais (regra de marca).
 export const clients: { name: string; logo: string; logoDark?: string; height: number; label?: boolean; color?: boolean }[] = [
   { name: "Emplo.ia", logo: "/logos/emploia.svg", height: 30 },
-  { name: "CRM do Jordão", logo: "/logos/crm-do-jordao-light.png", logoDark: "/logos/crm-do-jordao-dark.png", height: 58, color: true },
+  { name: "CRM do Jordão", logo: "/logos/crm-do-jordao.png", height: 44 },
   { name: "RD Station", logo: "/logos/rd-station.svg", height: 30 },
   { name: "Krug Bier", logo: "/logos/krug-bier.webp", height: 56 },
   { name: "Kin Chopp", logo: "/logos/kin-chopp.png", height: 56 },
