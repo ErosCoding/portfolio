@@ -24,6 +24,7 @@ const paths: Record<string, React.ReactNode> = {
   ),
   arrow: <path d="M7 17 17 7M8 7h9v9" />,
   arrowRight: <path d="M4 12h16M14 6l6 6-6 6" />,
+  download: <path d="M12 4v11M7 10l5 5 5-5M5 20h14" />,
   lock: (
     <>
       <rect x="5" y="11" width="14" height="10" rx="2" />

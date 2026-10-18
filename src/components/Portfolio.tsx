@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import {
   categories,
   education,
+  resume,
   clients,
   featuredProject,
   impact,
@@ -175,9 +176,13 @@ export default function Portfolio() {
         <div className="marquee" aria-hidden="true">
           <ul>
             {[...clients, ...clients].map((c, i) => (
-              <li key={i}>
+              <li key={i} className={c.color ? "color" : undefined}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={c.logo} alt="" style={{ height: c.height }} />
+                <img src={c.logo} alt="" style={{ height: c.height }} className={c.logoDark ? "only-light" : undefined} />
+                {c.logoDark && (
+                  /* eslint-disable-next-line @next/next/no-img-element */
+                  <img src={c.logoDark} alt="" style={{ height: c.height }} className="only-dark" />
+                )}
                 {c.label && <span>{c.name}</span>}
               </li>
             ))}
@@ -305,15 +310,25 @@ export default function Portfolio() {
             </ol>
             <aside className="certs" data-reveal>
               <h3>[ {t(ui.eduTitle)} ]</h3>
-              <a className="diploma" href={education.file} target="_blank" rel="noreferrer">
+              <a className="diploma" href={education.verifyUrl} target="_blank" rel="noreferrer">
                 <span>
                   <strong>{t(education.course)}</strong>
                   <span className="muted">{education.school}</span>
+                  <span className="muted code">
+                    {t(ui.verifyCode)}: {education.verifyCode}
+                  </span>
                 </span>
                 <span className="diploma-link">
                   {t(ui.diploma)} <Icon name="arrow" size={14} />
                 </span>
               </a>
+              <h3>[ {t(ui.resumeTitle)} ]</h3>
+              <div className="resume">
+                <p>{t(ui.resumeText)}</p>
+                <a className="btn solid" href={resume} download="Eros-Rodrigues-Curriculo.pdf">
+                  <Icon name="download" size={16} /> {t(ui.resumeCta)}
+                </a>
+              </div>
               <h3>[ {t(ui.stackTitle)} ]</h3>
               <div className="stack">
                 {stack.map((g) => (
@@ -343,6 +358,9 @@ export default function Portfolio() {
             <div className="actions" data-reveal>
               <a className="btn invert" href={whatsapp} target="_blank" rel="noreferrer">
                 <Icon name="chat" size={16} /> WhatsApp
+              </a>
+              <a className="btn ghost" href={resume} download="Eros-Rodrigues-Curriculo.pdf">
+                <Icon name="download" size={16} /> {t(ui.resumeCta)}
               </a>
               <a className="btn ghost" href={`mailto:${profile.links.email}`}>
                 <Icon name="mail" size={16} /> {profile.links.email}

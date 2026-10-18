@@ -52,7 +52,7 @@ export const ui = {
   stats: [
     { value: "10+", label: { pt: "empresas atendidas com automação e IA", en: "companies served with automation and AI" } },
     { value: "12", label: { pt: "clientes na carteira que conduzi como ponto focal técnico", en: "client accounts I led as technical owner" } },
-    { value: "1", label: { pt: "SaaS sob minha responsabilidade", en: "SaaS product I'm responsible for" } },
+    { value: "2", label: { pt: "SaaS sob minha responsabilidade", en: "SaaS products I'm responsible for" } },
   ],
   approachText: {
     pt: "Antes de programar eu sentei do outro lado do balcão. Vendi, atendi cliente, conferi planilha e fechei caixa. Por isso eu olho para uma operação procurando onde o dinheiro escapa e onde as pessoas perdem tempo. Depois construo a solução que tira esse peso da equipe e deixa claro qual ação tomar.",
@@ -95,7 +95,11 @@ export const ui = {
   clientsLabel: { pt: "Empresas para quem criei soluções", en: "Companies I've built for" },
   pathTitle: { pt: "Trajetória", en: "Journey" },
   eduTitle: { pt: "Formação", en: "Education" },
-  diploma: { pt: "Ver diploma", en: "View diploma" },
+  diploma: { pt: "Validar diploma", en: "Verify diploma" },
+  verifyCode: { pt: "Código de validação", en: "Validation code" },
+  resumeTitle: { pt: "Currículo", en: "Resume" },
+  resumeText: { pt: "Versão em PDF com experiência, formação e ferramentas.", en: "PDF version with experience, education and tools." },
+  resumeCta: { pt: "Baixar currículo", en: "Download resume" },
   stackTitle: { pt: "Ferramentas", en: "Toolkit" },
   contactKicker: { pt: "Vamos conversar", en: "Let's talk" },
   contactTitle: { pt: "Tem um processo manual ou um funil vazando?", en: "Got a manual process or a leaky funnel?" },
@@ -228,6 +232,18 @@ export const projects: Project[] = [
     private: true,
   },
   {
+    name: "Conteúdo editorial automatizado",
+    org: "RD Station",
+    year: "2025",
+    categories: ["ai", "automation"],
+    summary: {
+      pt: "Uma esteira que pesquisa, escreve, revisa e publica artigos de blog sozinha. O texto sai com a voz da marca, natural de ler e dentro do padrão de qualidade exigido pelo time editorial.",
+      en: "A pipeline that researches, writes, reviews and publishes blog articles on its own. The writing keeps the brand voice, reads naturally and meets the editorial team's quality bar.",
+    },
+    stack: ["n8n", "OpenAI", "Claude", "CMS API"],
+    private: true,
+  },
+  {
     name: "Sales Vision",
     org: "Agência Arms",
     year: "2026",
@@ -328,13 +344,13 @@ export const projects: Project[] = [
     private: true,
   },
   {
-    name: "FAQ interativo",
+    name: "Atendimento e FAQ interativo",
     org: "Impactour Chile",
     year: "2026",
-    categories: ["web"],
+    categories: ["ai", "web"],
     summary: {
-      pt: "FAQ interativo em espanhol para os clientes da Impactour que iam ao show em Santiago, com prazos, pagamentos, logística e 116 perguntas com busca.",
-      en: "Interactive Spanish FAQ for Impactour customers going to the Santiago concert, with deadlines, payments, logistics and 116 searchable questions.",
+      pt: "Automação de atendimento que tira as dúvidas dos clientes sobre os passeios, e um FAQ interativo em espanhol para quem ia ao show em Santiago, com prazos, pagamentos, logística e 116 perguntas com busca.",
+      en: "Support automation that answers customer questions about the tours, plus an interactive Spanish FAQ for fans going to the Santiago concert, with deadlines, payments, logistics and 116 searchable questions.",
     },
     stack: ["HTML", "CSS", "JavaScript", "Supabase"],
     url: "https://lp-faq-armys-chile.vercel.app",
@@ -377,9 +393,10 @@ export const projects: Project[] = [
   },
 ];
 
-export const clients: { name: string; logo: string; height: number; label?: boolean }[] = [
+// Logos com color: true aparecem nas cores originais (regra de marca).
+export const clients: { name: string; logo: string; logoDark?: string; height: number; label?: boolean; color?: boolean }[] = [
   { name: "Emplo.ia", logo: "/logos/emploia.svg", height: 30 },
-  { name: "CRM do Jordão", logo: "/logos/crm-do-jordao.png", height: 52 },
+  { name: "CRM do Jordão", logo: "/logos/crm-do-jordao-light.png", logoDark: "/logos/crm-do-jordao-dark.png", height: 58, color: true },
   { name: "RD Station", logo: "/logos/rd-station.svg", height: 30 },
   { name: "Krug Bier", logo: "/logos/krug-bier.webp", height: 56 },
   { name: "Kin Chopp", logo: "/logos/kin-chopp.png", height: 56 },
@@ -463,12 +480,15 @@ export const journey: { period: T; title: T; org: string; text: T }[] = [
   },
 ];
 
-// Coloque o PDF do diploma em public/diploma.pdf para o link funcionar.
+// O diploma é validado na consulta pública da PUC, sem expor documentos pessoais.
 export const education = {
   course: { pt: "Análise e Desenvolvimento de Sistemas", en: "Systems Analysis and Development" },
   school: "PUC Minas",
-  file: "/diploma.pdf",
+  verifyUrl: "https://web.sistemas.pucminas.br/SGA.Administrativo/CNC/ConsultaPublica",
+  verifyCode: "338.338.2c274ab64dca",
 };
+
+export const resume = "/curriculo.pdf";
 
 export const stack: { group: T; items: string[] }[] = [
   { group: { pt: "IA", en: "AI" }, items: ["OpenAI", "Claude", "Gemini", "Higgsfield", "Whisper", "RAG", "Multiagentes"] },
