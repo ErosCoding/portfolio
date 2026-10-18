@@ -44,6 +44,10 @@ Tudo que aparece no site está em `src/content/data.ts`: perfil, projetos, clien
 * Animações respeitam a preferência de movimento reduzido
 * Layout responsivo do celular ao desktop
 
+## Currículo
+
+A fonte está em `curriculo/curriculo.html`. Para gerar o PDF, abra o arquivo no navegador, imprima em A4 sem cabeçalho e rodapé e salve como `public/curriculo.pdf`.
+
 ## Deploy
 
 Publicado na Vercel. Nenhuma variável de ambiente é necessária.
