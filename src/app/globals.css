@@ -1038,6 +1038,15 @@ html[data-intro="done"] .line > span {
   transition: background 0.2s ease, color 0.2s ease;
 }
 
+.filters.visibility {
+  margin-bottom: 8px;
+}
+
+.filters button svg {
+  vertical-align: -1px;
+  margin-right: 4px;
+}
+
 .filters button span {
   font-family: var(--font-mono), monospace;
   font-size: 11px;
@@ -1300,6 +1309,12 @@ html[data-intro="done"] .line > span {
   text-decoration: underline;
 }
 
+.visit-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
 @keyframes rise {
   from {
     opacity: 0;
@@ -1386,21 +1401,14 @@ html[data-intro="done"] .line > span {
 }
 
 .diploma {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
+  display: grid;
+  gap: 8px;
   padding: 14px;
   border-radius: 10px;
   border: 1px solid var(--border);
-  transition: border-color 0.2s ease;
 }
 
-.diploma:hover {
-  border-color: var(--brand-ink);
-}
-
-.diploma > span:first-child {
+.diploma-head {
   display: flex;
   flex-direction: column;
   font-size: 14.5px;
@@ -1410,20 +1418,48 @@ html[data-intro="done"] .line > span {
   font-size: 12.5px;
 }
 
+.diploma-code {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 6px 6px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+
+.diploma-code code {
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  font-family: var(--font-mono), monospace;
+  font-size: 13px;
+  user-select: all;
+}
+
+.diploma-code button {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  flex: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  background: var(--text);
+  color: var(--bg);
+  font-size: 12.5px;
+  font-weight: 600;
+}
+
 .diploma-link {
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  flex: none;
   font-size: 13px;
   font-weight: 600;
   color: var(--brand-ink);
 }
 
-.diploma .code {
-  font-family: var(--font-mono), monospace;
-  font-size: 11px;
-  margin-top: 4px;
+.diploma-link:hover {
+  text-decoration: underline;
 }
 
 .resume {

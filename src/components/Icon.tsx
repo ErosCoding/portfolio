@@ -46,6 +46,12 @@ const paths: Record<string, React.ReactNode> = {
   ),
   chat: <path d="M21 12a8 8 0 0 1-11.8 7L4 20l1.1-4.6A8 8 0 1 1 21 12z" />,
   check: <path d="m5 12 4 4 10-10" />,
+  copy: (
+    <>
+      <rect x="9" y="9" width="11" height="11" rx="2" />
+      <path d="M5 15V6a2 2 0 0 1 2-2h9" />
+    </>
+  ),
 };
 
 export function Icon({ name, size = 20 }: { name: string; size?: number }) {
