@@ -90,13 +90,25 @@ export const ui = {
   solution: { pt: "Solução", en: "Solution" },
   visit: { pt: "Ver online", en: "Visit" },
   crmCta: { pt: "Conhecer o CRM do Jordão", en: "Visit CRM do Jordão" },
+  code: { pt: "Ver código", en: "View code" },
   privateTag: { pt: "Privado", en: "Private" },
   filterAll: { pt: "Tudo", en: "All" },
+  visibility: {
+    all: { pt: "Todos", en: "All" },
+    public: { pt: "Código aberto", en: "Open source" },
+    private: { pt: "Privados", en: "Private" },
+  },
   clientsLabel: { pt: "Empresas para quem criei soluções", en: "Companies I've built for" },
   pathTitle: { pt: "Trajetória", en: "Journey" },
   eduTitle: { pt: "Formação", en: "Education" },
   diploma: { pt: "Validar diploma", en: "Verify diploma" },
   verifyCode: { pt: "Código de validação", en: "Validation code" },
+  copy: { pt: "Copiar código", en: "Copy code" },
+  copied: { pt: "Copiado", en: "Copied" },
+  verifyHint: {
+    pt: "Copie o código e cole na consulta pública da PUC Minas.",
+    en: "Copy the code and paste it into PUC Minas' public lookup.",
+  },
   resumeTitle: { pt: "Currículo", en: "Resume" },
   resumeText: { pt: "Versão em PDF com experiência, formação e ferramentas.", en: "PDF version with experience, education and tools." },
   resumeCta: { pt: "Baixar currículo", en: "Download resume" },
@@ -181,6 +193,8 @@ export type Project = {
   highlights?: T[];
   stack: string[];
   url?: string;
+  // Repositório público no GitHub. Sem repo, o projeto conta como privado no filtro.
+  repo?: string;
   private?: boolean;
 };
 
@@ -366,6 +380,32 @@ export const projects: Project[] = [
     },
     stack: ["HTML", "CSS", "JavaScript"],
     url: "https://lp-enjoy-hostel.vercel.app",
+  },
+  {
+    name: "Elite Hapkido",
+    org: "Academia de hapkido · BH",
+    year: "2026",
+    categories: ["web"],
+    summary: {
+      pt: "Landing page da Elite Hapkido, no CT Forja em Santa Terezinha. Apresenta o professor, as turmas e os horários, com fotos e vídeos das aulas e botões que levam direto para o WhatsApp e o Google Maps.",
+      en: "Landing page for Elite Hapkido at CT Forja, Santa Terezinha. It introduces the instructor, classes and schedule, with class photos and videos and buttons straight to WhatsApp and Google Maps.",
+    },
+    stack: ["HTML", "CSS", "JavaScript", "Vercel"],
+    url: "https://lp-elite-hapkido.vercel.app",
+    repo: "https://github.com/ErosCoding/lp-elite-hapkido",
+  },
+  {
+    name: "Black Guardian Jiu-Jitsu",
+    org: "Academia de jiu-jitsu · BH",
+    year: "2026",
+    categories: ["web"],
+    summary: {
+      pt: "Landing page da Black Guardian, com turmas adulto, feminino, infantil e defesa pessoal, grade de horários, galeria e um mascote interativo que ensina golpes e pontuação do jiu-jitsu.",
+      en: "Landing page for Black Guardian, with adult, women's, kids and self-defense classes, a schedule, a gallery and an interactive mascot that teaches jiu-jitsu moves and scoring.",
+    },
+    stack: ["HTML", "CSS", "JavaScript", "Vercel"],
+    url: "https://lp-jiujitsu-blackguardian.vercel.app",
+    repo: "https://github.com/ErosCoding/lp-jiujitsu-blackguardian",
   },
   {
     name: "NK Tattoo",

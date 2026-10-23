@@ -10,7 +10,7 @@ import {
   impact,
   journey,
   profile,
-  projects,
+  projects as baseProjects,
   services,
   stack,
   ui,
@@ -36,9 +36,13 @@ const sections = [
 
 const whatsapp = `https://wa.me/${profile.links.whatsapp}`;
 
-export default function Portfolio() {
+type Visibility = "all" | "public" | "private";
+const visibilities: Visibility[] = ["all", "public", "private"];
+
+export default function Portfolio({ githubProjects = [] }: { githubProjects?: Project[] }) {
   const [lang, setLang] = useState<Lang>("pt");
   const [filter, setFilter] = useState<Category | "all">("all");
+  const [visibility, setVisibility] = useState<Visibility>("all");
   const [current, setCurrent] = useState("top");
   const t: Tr = (v) => v[lang];
 
@@ -84,8 +88,16 @@ export default function Portfolio() {
     } catch {}
   };
 
-  const count = (c: Category) => projects.filter((p) => p.categories.includes(c)).length;
-  const visible = filter === "all" ? projects : projects.filter((p) => p.categories.includes(filter));
+  // Repos vindos do GitHub entram depois da lista manual, sem repetir o que já está nela.
+  const listed = new Set(baseProjects.map((p) => p.repo?.toLowerCase()));
+  const projects = [...baseProjects, ...githubProjects.filter((p) => !listed.has(p.repo?.toLowerCase()))];
+  const isPublic = (p: Project) => Boolean(p.repo);
+  const byVisibility = (p: Project) => visibility === "all" || (visibility === "public") === isPublic(p);
+  const byCategory = (p: Project) => filter === "all" || p.categories.includes(filter);
+  const count = (c: Category) => projects.filter((p) => byVisibility(p) && p.categories.includes(c)).length;
+  const countVis = (v: Visibility) =>
+    projects.filter((p) => byCategory(p) && (v === "all" || (v === "public") === isPublic(p))).length;
+  const visible = projects.filter((p) => byVisibility(p) && byCategory(p));
   const currentLabel = sections.find(([id]) => id === current)?.[1] ?? ui.nav.home;
 
   return (
@@ -271,9 +283,18 @@ export default function Portfolio() {
 
           <Featured p={featuredProject} t={t} />
 
+          <div className="filters visibility" role="tablist" aria-label={t(ui.visibility.all)}>
+            {visibilities.map((v) => (
+              <button key={v} role="tab" aria-selected={visibility === v} onClick={() => setVisibility(v)}>
+                {v === "private" && <Icon name="lock" size={12} />}
+                {t(ui.visibility[v])} <span>({countVis(v)})</span>
+              </button>
+            ))}
+          </div>
+
           <div className="filters" role="tablist" aria-label={t(ui.nav.work)}>
             <button role="tab" aria-selected={filter === "all"} onClick={() => setFilter("all")}>
-              {t(ui.filterAll)} <span>({projects.length})</span>
+              {t(ui.filterAll)} <span>({projects.filter(byVisibility).length})</span>
             </button>
             {categories.map((c) => (
               <button key={c.id} role="tab" aria-selected={filter === c.id} onClick={() => setFilter(c.id)}>
@@ -282,7 +303,7 @@ export default function Portfolio() {
             ))}
           </div>
 
-          <div className="projects" key={filter}>
+          <div className="projects" key={`${filter}-${visibility}`}>
             {visible.map((p, i) => (
               <ProjectCard key={p.name} p={p} t={t} index={projects.indexOf(p) + 1} delay={i} />
             ))}
@@ -310,18 +331,7 @@ export default function Portfolio() {
             </ol>
             <aside className="certs" data-reveal>
               <h3>[ {t(ui.eduTitle)} ]</h3>
-              <a className="diploma" href={education.verifyUrl} target="_blank" rel="noreferrer">
-                <span>
-                  <strong>{t(education.course)}</strong>
-                  <span className="muted">{education.school}</span>
-                  <span className="muted code">
-                    {t(ui.verifyCode)}: {education.verifyCode}
-                  </span>
-                </span>
-                <span className="diploma-link">
-                  {t(ui.diploma)} <Icon name="arrow" size={14} />
-                </span>
-              </a>
+              <Diploma t={t} />
               <h3>[ {t(ui.resumeTitle)} ]</h3>
               <div className="resume">
                 <p>{t(ui.resumeText)}</p>
@@ -650,12 +660,60 @@ function ProjectCard({ p, t, index, delay }: { p: Project; t: Tr; index: number;
             <li key={s}>{s}</li>
           ))}
         </ul>
-        {p.url && (
-          <a className="visit" href={p.url} target="_blank" rel="noreferrer">
-            {t(ui.visit)} <Icon name="arrow" size={14} />
-          </a>
+        {(p.url || p.repo) && (
+          <div className="visit-row">
+            {p.url && (
+              <a className="visit" href={p.url} target="_blank" rel="noreferrer">
+                {t(ui.visit)} <Icon name="arrow" size={14} />
+              </a>
+            )}
+            {p.repo && (
+              <a className="visit" href={p.repo} target="_blank" rel="noreferrer">
+                <GitHubIcon size={14} /> {t(ui.code)}
+              </a>
+            )}
+          </div>
         )}
       </div>
     </article>
+  );
+}
+
+// O código fica visível e copiável: a consulta da PUC pede que ele seja colado no formulário.
+function Diploma({ t }: { t: Tr }) {
+  const [copied, setCopied] = useState(false);
+  const copy = async () => {
+    try {
+      await navigator.clipboard.writeText(education.verifyCode);
+    } catch {
+      const input = document.createElement("textarea");
+      input.value = education.verifyCode;
+      document.body.appendChild(input);
+      input.select();
+      document.execCommand("copy");
+      input.remove();
+    }
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  return (
+    <div className="diploma">
+      <div className="diploma-head">
+        <strong>{t(education.course)}</strong>
+        <span className="muted">{education.school}</span>
+      </div>
+      <span className="muted">{t(ui.verifyCode)}</span>
+      <div className="diploma-code">
+        <code>{education.verifyCode}</code>
+        <button type="button" onClick={copy} aria-live="polite">
+          <Icon name={copied ? "check" : "copy"} size={14} /> {t(copied ? ui.copied : ui.copy)}
+        </button>
+      </div>
+      <p className="muted">{t(ui.verifyHint)}</p>
+      <a className="diploma-link" href={education.verifyUrl} target="_blank" rel="noreferrer">
+        {t(ui.diploma)} <Icon name="arrow" size={14} />
+      </a>
+    </div>
   );
 }
